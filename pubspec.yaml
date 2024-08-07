@@ -19,6 +19,7 @@ dependencies:
   googleapis_auth: ^1.6.0
   barcode_scan2: ^4.3.3
   image_picker: ^1.1.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

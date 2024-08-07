@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     BarcodeScannerScreen(),
     NotificationsScreen(),
     ReportScreen(),
-    ProfileScreen(),
+    MyApp(),
   ];
 
   void _onItemTapped(int index) {
@@ -32,14 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF43A047), // Set background color to #43A047
+        backgroundColor: Color(0xFF17395E), // Set background color to #17395E
+        iconTheme:
+            IconThemeData(color: Colors.white), // Change drawer icon to white
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.medical_services,
               size: 28,
-              color: Colors.white, // Icon color
+              color: Colors.white, // Icon color set to white
             ),
             SizedBox(width: 8), // Space between the icon and the text
             Text(
@@ -47,20 +49,22 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
-                color: Colors.white, // Text color
+                color: Colors.white, // Text color set to white
               ),
             ),
           ],
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications,
+                color: Colors.white), // Icon color set to white
             onPressed: () {
               _onItemTapped(1);
             },
           ),
           IconButton(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person,
+                color: Colors.white), // Icon color set to white
             onPressed: () {
               _onItemTapped(3);
             },
@@ -73,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xFF43A047),
+                color: Color(0xFF17395E), // Changed color to #17395E
               ),
               child: Text(
                 'Menu',
@@ -84,7 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: Icon(Icons.home,
+                  color: Color(0xFF17395E)), // Icon color set to #17395E
               title: Text('Home'),
               onTap: () {
                 Navigator.pop(context);
@@ -92,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.notifications),
+              leading: Icon(Icons.notifications,
+                  color: Color(0xFF17395E)), // Icon color set to #17395E
               title: Text('Notifications'),
               onTap: () {
                 Navigator.pop(context);
@@ -100,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.report),
+              leading: Icon(Icons.report,
+                  color: Color(0xFF17395E)), // Icon color set to #17395E
               title: Text('Report'),
               onTap: () {
                 Navigator.pop(context);
@@ -108,7 +115,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.person),
+              leading: Icon(Icons.person,
+                  color: Color(0xFF17395E)), // Icon color set to #17395E
               title: Text('Account'),
               onTap: () {
                 Navigator.pop(context);
@@ -116,7 +124,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.logout),
+              leading: Icon(Icons.logout,
+                  color: Color(0xFF17395E)), // Icon color set to #17395E
               title: Text('Logout'),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
@@ -131,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.white, Colors.grey],
+            colors: [Colors.grey, Colors.white], // Corrected gradient colors
           ),
         ),
         child: PageView(
@@ -145,17 +154,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Color(0xFF17395E), // Set BottomAppBar color to #17395E
         shape: CircularNotchedRectangle(),
         notchMargin: 8.0,
         child: Container(
-          height: 50.0, // Reduced height
+          height: 45.0, // Reduced height
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               _buildNavItem(Icons.home, 'Home', 0),
               _buildNavItem(Icons.notifications, 'Notifications', 1),
               const SizedBox(
-                  width: 50), // Adjusted gap for the floating action button
+                  width: 30), // Reduced gap for the floating action button
               _buildNavItem(Icons.report, 'Report', 2),
               _buildNavItem(Icons.person, 'Profile', 3),
             ],
@@ -172,8 +182,8 @@ class _HomeScreenState extends State<HomeScreen> {
               _onItemTapped(0); // Redirect to Barcode Scanner Page
             },
             child: Icon(Icons.qr_code_scanner_rounded,
-                size: 30), // Adjusted icon size
-            backgroundColor: Color(0xFF43A047),
+                size: 30, color: Colors.white), // Icon color set to white
+            backgroundColor: Color(0xFF17395E), // Changed color to #17395E
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30), // Make the icon round
             ),
@@ -194,12 +204,12 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           Icon(
             icon,
-            color: isSelected ? Color(0xFF43A047) : Colors.black,
+            color: Colors.white, // Icon color set to white
           ),
           Text(
             label,
             style: TextStyle(
-              color: isSelected ? Color(0xFF43A047) : Colors.black,
+              color: Colors.white, // Text color set to white
             ),
           ),
         ],

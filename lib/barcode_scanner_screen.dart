@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'scan_result_screen.dart'; // Import the new screen
+import 'scan_result_screen.dart';
+import 'medicine_details_page.dart'; // Import the new page
 
 class BarcodeScannerScreen extends StatefulWidget {
   const BarcodeScannerScreen({Key? key}) : super(key: key);
@@ -106,6 +107,17 @@ class _BarcodeScannerScreenState extends State<BarcodeScannerScreen> {
                 ),
                 prefixIcon: Icon(Icons.search),
               ),
+              onSubmitted: (value) {
+                if (value.isNotEmpty) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          MedicineDetailsPage(medicineName: value),
+                    ),
+                  );
+                }
+              },
             ),
             SizedBox(height: 20),
             // Serial number input
